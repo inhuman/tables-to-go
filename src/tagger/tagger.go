@@ -44,7 +44,14 @@ func (t *StblTag) GenerateTag(db database.Database, column database.Column, sett
 		isAutoIncrement = ",SERIAL,AUTO_INCREMENT"
 	}
 
-	return `stbl:"` + column.Name + isPk + isAutoIncrement + `"`
+	tag := `stbl:"` + column.Name + isPk + isAutoIncrement + `"`
+
+	if settings.OutputFormatTag == "o" {
+		tag = `stbl:"` + strcase.SnakeCase(column.Name) + isPk + isAutoIncrement + `"`
+	}
+
+	return tag
+
 }
 
 // SQLTag is the experimental "sql"-tag
