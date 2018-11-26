@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/fraenky8/tables-to-go/src/settings"
+	"github.com/inhuman/tables-to-go/src/settings"
 	"github.com/jmoiron/sqlx"
 )
 

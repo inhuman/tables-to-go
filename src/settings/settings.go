@@ -28,19 +28,20 @@ var (
 
 // Settings stores the supported settings / command line arguments
 type Settings struct {
-	Verbose        bool
-	DbType         string
-	User           string
-	Pswd           string
-	DbName         string
-	Schema         string
-	Host           string
-	Port           string
-	OutputFilePath string
-	OutputFormat   string
-	PackageName    string
-	Prefix         string
-	Suffix         string
+	Verbose         bool
+	DbType          string
+	User            string
+	Pswd            string
+	DbName          string
+	Schema          string
+	Host            string
+	Port            string
+	OutputFilePath  string
+	OutputFormat    string
+	OutputFormatTag string
+	PackageName     string
+	Prefix          string
+	Suffix          string
 
 	TagsNoDb bool
 
@@ -65,19 +66,20 @@ func NewSettings() *Settings {
 	}
 
 	return &Settings{
-		Verbose:        false,
-		DbType:         "pg",
-		User:           "postgres",
-		Pswd:           "",
-		DbName:         "postgres",
-		Schema:         "public",
-		Host:           "127.0.0.1",
-		Port:           "", // left blank -> is automatically determined if not set
-		OutputFilePath: dir,
-		OutputFormat:   "c",
-		PackageName:    "dto",
-		Prefix:         "",
-		Suffix:         "",
+		Verbose:         false,
+		DbType:          "pg",
+		User:            "postgres",
+		Pswd:            "",
+		DbName:          "postgres",
+		Schema:          "public",
+		Host:            "127.0.0.1",
+		Port:            "", // left blank -> is automatically determined if not set
+		OutputFilePath:  dir,
+		OutputFormat:    "c",
+		OutputFormatTag: "c",
+		PackageName:     "dto",
+		Prefix:          "",
+		Suffix:          "",
 
 		TagsNoDb: false,
 

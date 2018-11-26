@@ -6,9 +6,9 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/fraenky8/tables-to-go/src/database"
-	"github.com/fraenky8/tables-to-go/src/settings"
-	"github.com/fraenky8/tables-to-go/src/tagger"
+	"github.com/inhuman/tables-to-go/src/database"
+	"github.com/inhuman/tables-to-go/src/settings"
+	"github.com/inhuman/tables-to-go/src/tagger"
 )
 
 var (

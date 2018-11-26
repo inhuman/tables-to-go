@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fraenky8/tables-to-go/src"
-	"github.com/fraenky8/tables-to-go/src/settings"
+	"github.com/inhuman/tables-to-go/src"
+	"github.com/inhuman/tables-to-go/src/settings"
 )
 
 // CmdArgs represents the supported command line args
@@ -35,6 +35,7 @@ func NewCmdArgs() (cmdArgs *CmdArgs) {
 
 	flag.StringVar(&cmdArgs.OutputFilePath, "of", cmdArgs.OutputFilePath, "output file path, default is current working directory")
 	flag.StringVar(&cmdArgs.OutputFormat, "format", cmdArgs.OutputFormat, "camelCase (c) or original (o)")
+	flag.StringVar(&cmdArgs.OutputFormatTag, "format-tags", cmdArgs.OutputFormat, "camelCase (c) or original (o) for db tags")
 	flag.StringVar(&cmdArgs.Prefix, "pre", cmdArgs.Prefix, "prefix for file- and struct names")
 	flag.StringVar(&cmdArgs.Suffix, "suf", cmdArgs.Suffix, "suffix for file- and struct names")
 	flag.StringVar(&cmdArgs.PackageName, "pn", cmdArgs.PackageName, "package name")

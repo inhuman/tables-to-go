@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/fraenky8/tables-to-go/src/database"
+	"github.com/inhuman/tables-to-go/src/database"
 )
 
 // Tagger interface for types of struct-tages

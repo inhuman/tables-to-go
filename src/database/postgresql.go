@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/fraenky8/tables-to-go/src/settings"
+	"github.com/inhuman/tables-to-go/src/settings"
 	// postgres database driver
 	_ "github.com/lib/pq"
 )
