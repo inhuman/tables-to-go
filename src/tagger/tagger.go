@@ -2,29 +2,37 @@ package tagger
 
 import (
 	"fmt"
-	"strings"
-
 	"github.com/inhuman/tables-to-go/src/database"
+	"github.com/inhuman/tables-to-go/src/settings"
+	"github.com/stoewer/go-strcase"
+	"strings"
 )
 
 // Tagger interface for types of struct-tages
 type Tagger interface {
-	GenerateTag(db database.Database, column database.Column) string
+	GenerateTag(db database.Database, column database.Column, settings *settings.Settings) string
 }
 
 // DbTag is the standard "db"-tag
 type DbTag string
 
 // GenerateTag for DbTag to satisfy the Tagger interface
-func (t *DbTag) GenerateTag(db database.Database, column database.Column) string {
-	return `db:"` + column.Name + `"`
+func (t *DbTag) GenerateTag(db database.Database, column database.Column, settings *settings.Settings) string {
+
+	tag := `db:"` + column.Name + `"`
+
+	if settings.OutputFormatTag == "o" {
+		tag = `db:"` + strcase.SnakeCase(column.Name) + `"`
+	}
+
+	return tag
 }
 
 // StblTag represents the Masterminds/structable "stbl"-tag
 type StblTag string
 
 // GenerateTag for StblTag to satisfy the Tagger interface
-func (t *StblTag) GenerateTag(db database.Database, column database.Column) string {
+func (t *StblTag) GenerateTag(db database.Database, column database.Column, settings *settings.Settings) string {
 
 	isPk := ""
 	if db.IsPrimaryKey(column) {
@@ -43,7 +51,7 @@ func (t *StblTag) GenerateTag(db database.Database, column database.Column) stri
 type SQLTag string
 
 // GenerateTag for SQLTag to satisfy the Tagger interface
-func (t *SQLTag) GenerateTag(db database.Database, column database.Column) string {
+func (t *SQLTag) GenerateTag(db database.Database, column database.Column, settings *settings.Settings) string {
 
 	colType := ""
 	characterMaximumLength := ""

@@ -26,6 +26,8 @@ var (
 	}
 )
 
+var GlobalSettings *Settings
+
 // Settings stores the supported settings / command line arguments
 type Settings struct {
 	Verbose         bool

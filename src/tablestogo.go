@@ -126,7 +126,7 @@ func createTableStructString(settings *settings.Settings, db database.Database, 
 		structFields.WriteString(column.Name)
 		structFields.WriteString(" ")
 		structFields.WriteString(columnType)
-		structFields.WriteString(generateTags(db, column))
+		structFields.WriteString(generateTags(db, column, settings))
 		structFields.WriteString("\n")
 
 		// save some info for later use
@@ -200,11 +200,11 @@ func createStructFile(path, name, content string) error {
 	return ioutil.WriteFile(fileName, formatedContent, 0666)
 }
 
-func generateTags(db database.Database, column database.Column) (tags string) {
+func generateTags(db database.Database, column database.Column, settings *settings.Settings) (tags string) {
 	for t := 1; t <= effectiveTags; t *= 2 {
 		shouldTag := effectiveTags&t > 0
 		if shouldTag {
-			tags += taggers[t].GenerateTag(db, column) + " "
+			tags += taggers[t].GenerateTag(db, column, settings) + " "
 		}
 	}
 	if len(tags) > 0 {
